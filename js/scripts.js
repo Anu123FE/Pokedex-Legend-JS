@@ -25,7 +25,7 @@ return {
 
 })();
 //adding a new pokemon-Charizard to the list
-pokemonRepository.add({name: "Charizard", height: 4.2, type: ["land", "poison", "magic"]});
+pokemonRepository.add({name: "Charizard", height: 4.2, type: [" land", " poison", " magic"]});
 //printing to console.log
 console.log(pokemonRepository.getAll());
 console.log(pokemonRepository.add());
