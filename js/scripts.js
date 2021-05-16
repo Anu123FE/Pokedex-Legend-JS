@@ -30,10 +30,10 @@ function main()
   button.classList.add("button-class");
   //adding eventListener property-upon clicking the button, the pokemon's characteristics should display as an alert
   button.addEventListener('click', function() {
-    let pokemonDetails = `Name : ${pokemon.name}
+    let showDetails = `Name : ${pokemon.name}
     Height: ${pokemon.height}
     Types: ${[...pokemon.type]}`
-    alert(pokemonDetails);
+    alert(showDetails);
   });
   listItemPokemon.appendChild(button);
   newPokemonList.appendChild(listItemPokemon);
