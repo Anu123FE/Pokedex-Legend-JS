@@ -17,7 +17,7 @@ function getAll(){
 function add(pokemon) {
   pokemonList.push(pokemon);
 }
-//adding addlistItem which will hold the DOM manipulation code
+
 function addListItem(pokemon){
   let newPokemonList = document.querySelector(".pokemon-list");
   let listItemPokemon = document.createElement("li");
@@ -27,7 +27,7 @@ function addListItem(pokemon){
   button.addEventListener('click', function() {
     let showDetails = `Name: ${pokemon.name}
     Height: ${pokemon.height}
-    Type: ${[...pokemon.type]}`
+    Types: ${[...pokemon.type]}`
     console.log(showDetails);
   });
   listItemPokemon.appendChild(button);
