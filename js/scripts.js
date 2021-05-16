@@ -27,7 +27,7 @@ function addListItem(pokemon){
   button.addEventListener('click', function() {
     let showDetails = `Name: ${pokemon.name}
     Height: ${pokemon.height}
-    Types: ${[...pokemon.type]}`
+    Type: ${[...pokemon.type]}`
     console.log(showDetails);
   });
   listItemPokemon.appendChild(button);
