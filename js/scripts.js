@@ -17,22 +17,34 @@ function getAll(){
 function add(pokemon) {
   pokemonList.push(pokemon);
 }
+//adding function main to hold the code for DOM Manipulation and forEach function
+function main()
+{
+  //adding a new pokemon-Charizard to the list
+  pokemonRepository.add({name: "Charizard", height: 4.2, type: [" land", " poison", " magic"]});
+  pokemonRepository.getAll().forEach(function(pokemon){
+  let newPokemonList = document.querySelector(".pokemon-list");
+  let listItemPokemon = document.createElement("li");
+  let button = document.createElement("button");
+  button.innerText = pokemon.name;
+  button.classList.add("button-class");
+  //adding eventListener property-upon clicking the button, the pokemon's characteristics should display as an alert
+  button.addEventListener('click', function() {
+    let pokemonDetails = `Name : ${pokemon.name}
+    Height: ${pokemon.height}
+    Types: ${[...pokemon.type]}`
+    alert(pokemonDetails);
+  });
+  listItemPokemon.appendChild(button);
+  newPokemonList.appendChild(listItemPokemon);
+});
+}
+
 //adding the return statement
 return {
   getAll: getAll,
   add: add,
+  main: main
   };
-
 })();
-//adding a new pokemon-Charizard to the list
-pokemonRepository.add({name: "Charizard", height: 4.2, type: [" land", " poison", " magic"]});
-//printing to console.log
-console.log(pokemonRepository.getAll());
-console.log(pokemonRepository.add());
-//calling function getAll for accessing the variable in pokemonRepository with a forEach loop and printing in the DOM
-pokemonRepository.getAll().forEach(function(pokemon){
-  document.write(pokemon.name+"<br>");
-  document.write(pokemon.height+"<br>");
-  document.write(pokemon.type+"<br>");
-  document.write("<hr>");
-});
+pokemonRepository.main();
