@@ -1,52 +1,80 @@
-//wrapping the code in an IIFE
-
+//removing the other array of pokemons and adding an empty array and adding the external source of pokemons (API)
 let pokemonRepository = (function () {
+  let pokemonList = [];
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+//adding add function-then push feature
+  function add(pokemon) {
+    pokemonList.push(pokemon);
+  }
+  //getAll function will return the pokemonList (loaded from API)
+  function getAll() {
+    return pokemonList;
+  }
+  //addListItem is for adding HTML elements and appending the button, also to insert the addEventListener -upon clicking the details of the pokemon will be logged
+  //onto the console log
+  function addListItem(pokemon) {
+    let pokemonList = document.querySelector(".pokemon-list");
+    let listpokemon = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("button-class");
+    listpokemon.appendChild(button);
+    pokemonList.appendChild(listpokemon);
+    button.addEventListener("click", function(event) {
+      showDetails(pokemon);
+    });
+  }
+//loadList will fetch the data from the API then pass it onto the 1st .then function as a response, if this promise is resolved, a json data format is returned
+//which is then passed onto the 2nd .then function. The json data is stored under results key in the API,so passing a forEach function for each item
+//and then logging in what is needed (item.name and item.url) on the console log. Also the .catch function catches any errors (if the promise is not resolved)
+  function loadList(item) {
+    return fetch(apiUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+        console.log(pokemon);
+      });
+    }).catch(function (e) {
+      console.error(e);
+    })
+  }
+//loadDetails function is to determine what details are needed to be fetched just like the loadList function (except for the change in parameter(item))
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function (e) {
+      console.error(e);
+    });
+  }
+  function showDetails(item) {
+    pokemonRepository.loadDetails(item).then(function () {
+      console.log(item);
+    });
+  }
 
-let pokemonList = [
-{name: "Squirtle", height: 0.5, type: ["water", " dark", " normal"]},
-{name: "Arbok", height: 3.5, type: ["poison", " fire", " ice"]},
-{name: "Arcanine", height: 1.9, type: [" fire", " fairy", " steel"]},
-{name: "Krabby", height: 0.4, type: [" water", " grass", " electric"
-]}
-];
-//adding getAll key, with return statement-will return the pokemonList
-function getAll(){
-  return pokemonList;
-}
-//adding add key, will push a new pokemon with new properties into the list
-function add(pokemon) {
-  pokemonList.push(pokemon);
-}
-
-function addListItem(pokemon){
-  let newPokemonList = document.querySelector(".pokemon-list");
-  let listItemPokemon = document.createElement("li");
-  let button = document.createElement("button");
-  button.innerText = pokemon.name;
-  button.classList.add("button-class");
-  button.addEventListener('click', function() {
-    let showDetails = `Name: ${pokemon.name}
-    Height: ${pokemon.height}
-    Type: ${[...pokemon.type]}`
-    console.log(showDetails);
-  });
-  listItemPokemon.appendChild(button);
-  newPokemonList.appendChild(listItemPokemon);
-};
-//adding the return statement
-return {
-  getAll: getAll,
-  add: add,
-  addListItem: addListItem
+  return {
+    add: add,
+    getAll: getAll,
+    addListItem: addListItem,
+    loadList: loadList,
+    loadDetails: loadDetails,
+    showDetails: showDetails
   };
-
 })();
-//adding a new pokemon-Charizard to the list
-pokemonRepository.add({name: "Charizard", height: 4.2, type: [" land", " poison", " magic"]});
-//printing to console.log
-console.log(pokemonRepository.getAll());
-console.log(pokemonRepository.add());
-//calling function getAll for accessing the variable in pokemonRepository with a forEach loop and printing in the DOM
-pokemonRepository.getAll().forEach(function(pokemon){
-  pokemonRepository.addListItem(pokemon);
+
+
+pokemonRepository.loadList().then(function () {
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
 });
