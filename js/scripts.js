@@ -1,7 +1,7 @@
 //wrapping the code in an IIFE
 
 let pokemonRepository = (function () {
-
+const modal = ``
 function pokemonListFromExternalSource()
 {
   const apiURL = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
@@ -14,10 +14,15 @@ function pokemonListFromExternalSource()
     pokemonList = response.results;
     pokemonList.forEach(pokemon=>{
     let newPokemonList = document.querySelector(".pokemon-list");
+    //newPokemonList.classList.add("list-group");
       let listItemPokemon = document.createElement("li");
       let button = document.createElement("button");
       button.innerText = pokemon.name;
+      button.classList.add("btn");
+      button.classList.add("btn-danger");
       button.classList.add("button-class");
+      button.setAttribute("data-toggle", "modal");
+      button.setAttribute("data-target", "#exampleModal");
       button.addEventListener('click', function() {
 
         fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
@@ -26,12 +31,10 @@ function pokemonListFromExternalSource()
           console.log(response)
           console.log(response.sprites.back_shiny)
 
-           let pokemonDetails = `Height: ${response.height}`
-
-
-        modal.showModal(`${pokemon.name}`, `${pokemonDetails}`, `${response.sprites.front_shiny}`);
-
-
+           let pokemonDetails = `Height: ${response.height}<br>`
+        $(".modal-title").html(pokemon.name)
+        $(".modal-body").html("")
+        $(".modal-body").append(`${pokemonDetails}`, `<img src="${response.sprites.front_shiny}">`)
         })
         .catch(err=>console.error(err))
 

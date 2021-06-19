@@ -1,5 +1,6 @@
 let modal = (function () {
-// Modal stars here
+
+// Modal starts here
   let modalContainer = document.querySelector('#modal-container');
   function showModal(title, text, imgSrc) {
     modalContainer.innerHTML = '';
@@ -56,7 +57,3 @@ return {
   };
 
 })();
-
-
-
-// modal.showModal();

@@ -1,19 +1,32 @@
 /* CSS Stylesheet */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,800&display=swap');
-body {
-  background: #dfdfdf;
-  padding: 20px 20px 20px 20px;
-  margin: 20px 20px 20px 20px;
+html, body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  width: 100%
+}
+.container{
+  display: grid;
+  grid-template-rows: 15% 85%;
+  width: 100%;
+  height: 100%
+}
+ul
+{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+h1{
   text-align: center;
-  display:block;
-  font-family: inherit;
 }
 /*Adding some CSS to the header*/
 .page-header {
   width: 100%;
-  height: 100px;
-  background: #9840BF;
+  height: 20%;
+  background: #d5d5d5;
   top: 0;
   box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.25);
   opacity: .95;
@@ -38,65 +51,6 @@ body {
    margin: 5px;
 }
 
-
-/* Modal starts here */
-#modal-container {
-  position: fixed;
-  padding: 20px;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  background-color: #40BF98;
-
-  /* to show it above other content */
-  z-index: 999;
-
-  /* to allow scrolling if the screen is not high enough*/
-  overflow: auto;
-
-  /* this is used to center the modal */
-  display: grid;
-  text-align: center;
+.modal-body {
+  margin: 0px auto;
 }
-
-.modal {
-  margin: auto;
-  display: inline-block;
-  box-sizing: border-box;
-  background: #c4c8cf;
-  padding: 15px;
-  width: 100%;
-  max-width: 700px;
-  text-align: center;
-}
-
-.modal-close {
-  float: right;
-  -webkit-appearance: none;
-  border: 0;
-  background: none;
-  color: #777;
-  text-decoration: underline;
-}
-
-.modal h1 {
-  margin-top: 0;
-}
-
-.modal p {
-  margin-bottom: 0;
-}
-
-#modal-container {
-  display: none;
-}
-
-#modal-container.is-visible {
-  /* CSS for modal container - add your own desired CSS styles here */
-  display: block;
-}
-
-/* Modal ends here */
