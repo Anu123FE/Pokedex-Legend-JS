@@ -37,7 +37,7 @@ let modal = (function () {
 
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-      hideModal();
+      hideModal();  
     }
   });
   modalContainer.addEventListener('click', (e) => {
@@ -57,3 +57,7 @@ return {
   };
 
 })();
+
+
+
+// modal.showModal();

@@ -38,7 +38,7 @@ function pokemonListFromExternalSource()
         })
         .catch(err=>console.error(err))
 
-
+       
         // alert(pokemonDetails);
       });
       listItemPokemon.appendChild(button);
@@ -46,7 +46,7 @@ function pokemonListFromExternalSource()
       })
       })
       .catch(error=>console.log(error))
-
+  
 }
 
 //adding getAll key, with return statement-will return the pokemonList
@@ -76,3 +76,26 @@ return {
 
 
 pokemonRepository.main();
+
+
+function sum (a, b){
+  return a + b;
+}
+//Async
+function sumWithPromise (a, b){
+  if(!a || !b)
+  {
+    return Promise.reject('You need two integers to call this function')
+  }
+  return Promise.resolve(a + b);
+}
+
+console.log(sum(5, 6))
+
+sumWithPromise(50, 59)
+.then(function(result){
+  console.log(result);
+})
+.catch(error=>console.log(error))
+
+
