@@ -10,6 +10,10 @@ const modal = (function () {
     myImage.src = imgSrc;
     modal.appendChild(myImage);
 
+function hideModal() {
+    modalContainer.classList.remove('is-visible');
+    }
+
     const closeButtonElement = document.createElement('button');
     closeButtonElement.classList.add('modal-close');
     closeButtonElement.innerText = 'Close';
@@ -27,10 +31,6 @@ const modal = (function () {
     modalContainer.appendChild(modal);
 
     modalContainer.classList.add('is-visible');
-  }
-
-  function hideModal() {
-    modalContainer.classList.remove('is-visible');
   }
 
   window.addEventListener('keydown', (e) => {
