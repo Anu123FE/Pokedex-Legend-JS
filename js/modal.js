@@ -1,9 +1,9 @@
-const modal = (function () {
+const modalBody = (function () {
 // Modal starts here
   const modalContainer = document.querySelector('#modal-container');
   function showModal(title, text, imgSrc) {
     modalContainer.innerHTML = '';
-    const modal = document.createElement('div');
+    let modal = document.createElement('div');
     modal.classList.add('modal');
 
     const myImage = document.createElement('img');
