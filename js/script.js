@@ -30,7 +30,7 @@ const pokemonRepository = (function () {
                 $('.modal-body').append(`${pokemonDetails}`, `<img src="${result.sprites.front_shiny}">`);
               })
               .catch((err) => {
-                //eslint-disable-lin
+                // eslint-disable-lin
                 console.error(err);
               });
 
@@ -41,7 +41,7 @@ const pokemonRepository = (function () {
         });
       })
       .catch((error) => {
-        //eslint-disable-lin
+        // eslint-disable-lin
         console.log(error);
       });
   }
