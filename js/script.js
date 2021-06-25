@@ -29,7 +29,10 @@ const pokemonRepository = (function () {
                 $('.modal-body').html('');
                 $('.modal-body').append(`${pokemonDetails}`, `<img src="${result.sprites.front_shiny}">`);
               })
-              .catch((err) => console.error(err));
+              .catch((err) => {
+                //eslint-disable-lin
+                console.error(err);
+              });
 
             // alert(pokemonDetails);
           });
@@ -37,7 +40,10 @@ const pokemonRepository = (function () {
           newPokemonList.appendChild(listItemPokemon);
         });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        //eslint-disable-lin
+        console.log(error);
+      });
   }
 
   // adding getAll key, with return statement-will return the pokemonList
