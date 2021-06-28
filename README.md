@@ -1,5 +1,7 @@
 Project Name: Pokedex-Legend-JS
 
+Project ScreenShot: ![image](https://user-images.githubusercontent.com/80176993/123566081-cecf0880-d78c-11eb-8ee7-7fff2daaabbb.png)
+
 Project Description: This project gives a list of Pokemons along with their details. The project is expected to provide the user all the details of a particular pokemon by clicking on it.
 
 Clicking on the Pokemon button will now provide the pokemon's details in the modal. The modal will display the image, name and the height of the pokemon. The data is derived from external APIs.
@@ -21,4 +23,5 @@ https://pokeapi.co/api/v2/pokemon/
 
 Added new links to get more details about pokemons:
 https://www.pokemon.com/us/
+
 
