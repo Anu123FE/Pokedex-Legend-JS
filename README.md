@@ -21,3 +21,4 @@ https://pokeapi.co/api/v2/pokemon/
 
 Added new links to get more details about pokemons:
 https://www.pokemon.com/us/
+
