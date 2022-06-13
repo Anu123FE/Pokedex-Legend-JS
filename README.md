@@ -1,5 +1,8 @@
 # Project Name: Pokedex-Legend-JS
 
+# Project Published On: 
+- https://anu123fe.github.io/Pokedex-Legend-JS/
+
 # Project ScreenShot: 
 
 - ![image](https://user-images.githubusercontent.com/80176993/123566081-cecf0880-d78c-11eb-8ee7-7fff2daaabbb.png)
